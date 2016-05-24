@@ -2,7 +2,6 @@ This repo contains code and instructions for making a "mirror" which applies the
 
 ![Cubist mom](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_1.jpg)
 ![Cubist Victor](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_2.jpg)
-![Cubist Gene](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_3.jpg)
 
 ### Overview
 
