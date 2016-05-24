@@ -1,8 +1,8 @@
 This repo contains code and instructions for making a "mirror" which applies the style transfer in real-time. It was initially made for [Cubist Mirror](https://vimeo.com/167910860), an installation that was on display for [alt-AI](alt-ai.net), a conference about art & artificial intelligence which occurred in May 2016 at [The School for Poetic Computation](http://www.sfpc.io) in New York. 
 
-![Cubist mom](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_1.jpg =320x)
-![Cubist Victor](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_2.jpg =280x)
-![Cubist Gene](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_3.jpg =190x)
+![Cubist mom](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_1.jpg)
+![Cubist Victor](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_2.jpg)
+![Cubist Gene](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_3.jpg)
 
 ### Overview
 
