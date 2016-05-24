@@ -12,7 +12,7 @@ public:
     
     string cmd_path;
     string cmd_chainer;
-    string style;
+    string model;
     
     ofImage cam_img;
     ofImage chainer_img;
@@ -22,19 +22,24 @@ public:
     ThreadedObject(): count(0), isNew(false), shouldThrowTestException(false){
         isNew = false;
         isAvailable = true;
-        style = "style_13";
     }
     
     void setIndex(int index) {
         this->index = index;
-        cmd_path = "export PATH=/usr/local/bin:/usr/local/sbin:/Users/gene/torch/install/bin:/Developer/NVIDIA/CUDA-7.5/bin:/usr/local/cuda/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin; export LD_LIBRARY_PATH=/Users/gene/torch/install/lib:/usr/local/cuda/lib:;";
-        cmd_chainer = "/usr/local/bin/python /Users/gene/Learn/chainer-fast-neuralstyle/generate.py /Users/gene/Code/of_v0.9.0_osx_release/apps/myApps/ThreadedChainerFast/bin/data/cam_"+ofToString(index)+".png -m /Users/gene/Learn/chainer-fast-neuralstyle/models/"+style+".model -o "+ofToDataPath("chainer_img_"+ofToString(index)+".png")+" --gpu 0";
+        setCommands();
     }
 
-    void setStyle(string style_) {
-        this->style = style_;
-        cmd_path = "export PATH=/usr/local/bin:/usr/local/sbin:/Users/gene/torch/install/bin:/Developer/NVIDIA/CUDA-7.5/bin:/usr/local/cuda/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin; export LD_LIBRARY_PATH=/Users/gene/torch/install/lib:/usr/local/cuda/lib:;";
-        cmd_chainer = "/usr/local/bin/python /Users/gene/Learn/chainer-fast-neuralstyle/generate.py /Users/gene/Code/of_v0.9.0_osx_release/apps/myApps/ThreadedChainerFast/bin/data/cam_"+ofToString(index)+".png -m /Users/gene/Learn/chainer-fast-neuralstyle/models/"+style+".model -o "+ofToDataPath("chainer_img_"+ofToString(index)+".png")+" --gpu 0";
+    void setStyleModel(string model) {
+        this->model = model;
+        setCommands();
+    }
+
+    void setCommands() {
+        string neuralStylePath = NEURAL_STYLE_PATH;
+        string path = PATH;
+        string ld_library_path = LD_LIBRARY_PATH;
+        cmd_path = "export PATH="+path+"; export LD_LIBRARY_PATH="+ld_library_path+";";
+        cmd_chainer = "/usr/local/bin/python "+neuralStylePath+"/generate.py "+ofToDataPath("cam_"+ofToString(index)+".png")+" -m "+model+" -o "+ofToDataPath("chainer_img_"+ofToString(index)+".png")+" --gpu "+(GPU_ENABLED==1?"0":"-1");
     }
     
     bool hasNew() {
@@ -70,7 +75,7 @@ public:
                 string cmd = cmd_path+cmd_chainer;
                 string res = ofSystem(cmd);
                 float t2 = ofGetElapsedTimef();
-                cout << "timing "<<this->index<<" : " << (t2-t1) << endl;
+
                 count++;
                 
                 isNew = true;
