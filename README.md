@@ -1,5 +1,9 @@
 This repo contains code and instructions for making a "mirror" which applies the style transfer in real-time. It was initially made for [Cubist Mirror](https://vimeo.com/167910860), an installation that was on display for [alt-AI](alt-ai.net), a conference about art & artificial intelligence which occurred in May 2016 at [The School for Poetic Computation](http://www.sfpc.io) in New York. 
 
+![Cubist mom](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_1.jpg)
+![Cubist Victor](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_2.jpg)
+![Cubist Gene](https://github.com/genekogan/CubistMirror/blob/master/photos/cubist_mirror_3.jpg)
+
 ### Overview
 
 The basic pipeline is an [OpenFrameworks](openframeworks.cc) app which repeatedly saves the webcam image to disk and then calls a chainer-based style transfer script onto it. The style transfer code is implemented with [chainer-fast-neuralstyle](https://github.com/yusuketomoto/chainer-fast-neuralstyle), a python script that applies a pre-computed style model to an image. It is similar to the iterative, optimization-based style transfer technique demonstrated by [Gatys et al](http://arxiv.org/abs/1508.06576) in 2015, but is able to do so in a single forward pass, and is thus 1000 times faster, enabling near real-time application, albeit at a slightly reduced quality.
